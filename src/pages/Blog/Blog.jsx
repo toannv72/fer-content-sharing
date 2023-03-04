@@ -16,11 +16,13 @@ function Blog() {
   return (
     <div>
       {/* <Posts /> */}
-      dnijsfcjnwei
-      {/* <Footer /> */}
-      <Test minh="minh" day="123" />
 
-      <Test minh="toan" day="321" />
+
+
+      {/* <Footer /> */}
+      {/* <Test minh="minh" day="123" />
+
+      <Test minh="toan" day="321" /> */}
 
     </div>
   );
