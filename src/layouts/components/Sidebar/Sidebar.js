@@ -22,6 +22,12 @@ function Sidebar() {
                     icon={<UserGroupIcon />}
                     activeIcon={<UserGroupActiveIcon />}
                 />
+                <MenuItem
+                    title="Nổi bật"
+                    to={config.routes.blog}
+                    icon={<UserGroupIcon />}
+                    activeIcon={<UserGroupActiveIcon />}
+                />
             </Menu>
         </aside>
     );
