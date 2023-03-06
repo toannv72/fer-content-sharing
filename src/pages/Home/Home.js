@@ -1,7 +1,9 @@
 // import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { useEffect, useState } from 'react';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 // import { Carousel } from 'react-responsive-carousel';
 import styles from './Home.module.scss';
+import { Carousel } from 'react-responsive-carousel';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 export default function Home() {
@@ -50,37 +52,37 @@ export default function Home() {
     // } else {
     return (
         <div className={cx('toan')}>
-            {/* <Carousel */}
-            autoPlay={true}
-            interval={4000}
-            showThumbs={false}
-            showStatus={false}
-            infiniteLoop={true}
-            autoFocus={true}
-            emulateTouch={true}
+            <Carousel
+                autoPlay={true}
+                interval={4000}
+                showThumbs={false}
+                showStatus={false}
+                infiniteLoop={true}
+                autoFocus={true}
+                emulateTouch={true}
                 //chế độ trung tâm
                 // centerMode={true}
-            onClickItem={toan}
-            {/* > */}
-            {/* {items.map((item, index) => (
+                onClickItem={toan}
+            >
+                {/* {items.map((item, index) => (
                         <div key={index}>
                             <img alt={index} src={item.img} />
                      
                         </div>
                     ))} */}
-            <img
-                alt=""
-                src="https://raw.githubusercontent.com/toansola3/thue-do/master/img/328063220_619078163361298_6566497839462960659_n.jpg"
-            />
-            <img
-                alt=""
-                src="https://github.com/toansola3/thue-do/blob/master/img/333133513_1458268194700445_2870753470290308647_n.jpg?raw=true"
-            />
-            <img
-                alt=""
-                src="https://github.com/toansola3/thue-do/blob/master/img/329149838_558473532883494_2508217283299694150_n.jpg?raw=true"
-            />
-            {/* </Carousel> */}
+                <img
+                    alt=""
+                    src="https://raw.githubusercontent.com/toansola3/thue-do/master/img/328063220_619078163361298_6566497839462960659_n.jpg"
+                />
+                <img
+                    alt=""
+                    src="https://github.com/toansola3/thue-do/blob/master/img/333133513_1458268194700445_2870753470290308647_n.jpg?raw=true"
+                />
+                <img
+                    alt=""
+                    src="https://github.com/toansola3/thue-do/blob/master/img/329149838_558473532883494_2508217283299694150_n.jpg?raw=true"
+                />
+            </Carousel>
         </div>
     );
 }
