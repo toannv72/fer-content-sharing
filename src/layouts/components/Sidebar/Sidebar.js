@@ -8,6 +8,7 @@ import {
     UserGroupActiveIcon,
 } from '~/components/Icons';
 import config from '~/config';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -29,6 +30,7 @@ function Sidebar() {
                     activeIcon={<UserGroupActiveIcon />}
                 />
             </Menu>
+            
         </aside>
     );
 }
