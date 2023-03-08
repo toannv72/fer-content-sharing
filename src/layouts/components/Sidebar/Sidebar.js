@@ -6,6 +6,7 @@ import {
     HomeActiveIcon,
     UserGroupIcon,
     UserGroupActiveIcon,
+    BlogIcon,
 } from '~/components/Icons';
 import config from '~/config';
 import { Link } from 'react-router-dom';
@@ -26,8 +27,8 @@ function Sidebar() {
                 <MenuItem
                     title="Nổi bật"
                     to={config.routes.blog}
-                    icon={<UserGroupIcon />}
-                    activeIcon={<UserGroupActiveIcon />}
+                    icon={<BlogIcon />}
+                    activeIcon={<BlogIcon />}
                 />
             </Menu>
             
