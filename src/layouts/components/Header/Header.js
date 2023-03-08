@@ -44,7 +44,7 @@ const MENU_ITEMS = [
                 },
             ],
         },
-        
+
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -81,7 +81,7 @@ function Header() {
             title: 'Settings',
             to: '/settings',
         },
-        ...MENU_ITEMS,
+
         {
             icon: <FontAwesomeIcon icon={faSignOut} />,
             title: 'Log out',
@@ -107,13 +107,13 @@ function Header() {
                                     <UploadIcon />
                                 </button>
                             </Tippy>
-                            
-                            <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+
+                            {/* <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
                                 <button className={cx('action-btn')}>
                                     <InboxIcon />
                                     <span className={cx('badge')}>13</span>
                                 </button>
-                            </Tippy>
+                            </Tippy> */}
                         </>
                     ) : (
                         <>
