@@ -2,8 +2,9 @@
 import { useEffect, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 // import { Carousel } from 'react-responsive-carousel';
-import styles from './Home.module.scss';
 import { Carousel } from 'react-responsive-carousel';
+
+import styles from './Home.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 export default function Home() {

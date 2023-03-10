@@ -9,6 +9,7 @@ import {
     BlogIcon,
 } from '~/components/Icons';
 import config from '~/config';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -34,6 +35,7 @@ function Sidebar() {
                     activeIcon={<BlogIcon />}
                 />
             </Menu>
+            
         </aside>
     );
 }

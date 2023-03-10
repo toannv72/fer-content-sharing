@@ -18,7 +18,7 @@ function ControlledCarousel() {
             <Home />
             <HomeBlog />
             <Home2 />
-
+                
             {/* <h2 class="">Xem gì hôm nay</h2>
             BLOG <Blog />
             <h3 class="suggest-blog">Có thể bạn thích</h3>

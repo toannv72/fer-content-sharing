@@ -5,7 +5,8 @@
 }
 
 .container {
-    width: var(--default-layout-width);
+    width: 1333px;
+    ;
     max-width: 100%;
     padding: 0 var(--default-layout-horizontal-spacer);
     margin-top: var(--default-layout-header-height);
@@ -15,5 +16,17 @@
 .content {
     flex: 1;
     margin-top: 20px;
-    margin-left: 148px;
+    margin-left: 250px;
+}
+
+
+@media (max-width: 740px) {
+
+    /* styles cho khi trình duyệt có chiều rộng <= 767px */
+
+    .content {
+        flex: 1;
+        margin-top: 20px;
+        margin-left: 100px;
+    }
 }

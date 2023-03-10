@@ -21,23 +21,23 @@ function Search() {
 
     const inputRef = useRef();
 
-    useEffect(() => {
-        if (!debouncedValue.trim()) {
-            setSearchResult([]);
-            return;
-        }
+    // useEffect(() => {
+    //     if (!debouncedValue.trim()) {
+    //         setSearchResult([]);
+    //         return;
+    //     }
 
-        const fetchApi = async () => {
-            setLoading(true);
+    //     const fetchApi = async () => {
+    //         setLoading(true);
 
-            const result = await searchServices.search(debouncedValue);
+    //         const result = await searchServices.search(debouncedValue);
 
-            setSearchResult(result);
-            setLoading(false);
-        };
+    //         setSearchResult(result);
+    //         setLoading(false);
+    //     };
 
-        fetchApi();
-    }, [debouncedValue]);
+    //     fetchApi();
+    // }, [debouncedValue]);
 
     const handleClear = () => {
         setSearchValue('');
