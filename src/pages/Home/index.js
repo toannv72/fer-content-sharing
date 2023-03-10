@@ -4,6 +4,7 @@ import Blog from '../Blog';
 import Home2 from './Home2';
 
 import Home from './Home';
+import HomeBlog from './HomeBlog';
 
 function ControlledCarousel() {
     const { pathname } = useLocation();
@@ -15,6 +16,7 @@ function ControlledCarousel() {
     return (
         <div>
             <Home />
+            <HomeBlog />
             <Home2 />
 
             {/* <h2 class="">Xem gì hôm nay</h2>

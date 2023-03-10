@@ -23,7 +23,7 @@ export default function name() {
             </div>
             <div className={cx('card')}>
                 <div className={cx('content')}>
-                    <h2 className={cx('title')}>THỂ THAO </h2>
+                    <h2 className={cx('title')}>LÀM ĐẸP</h2>
                     <p className={cx('copy')}>
                         Dụng cụ thể thao là vật không thể thiếu trong quá trình tập luyện thể dục thể thao, tuy nhiên
                         nếu bạn không có nhu cầu sử dụng chúng thường xuyên và trong thời gian dài sẽ gây lãng phí. Bên
@@ -39,7 +39,7 @@ export default function name() {
             </div>
             <div className={cx('card')}>
                 <div className={cx('content')}>
-                    <h2 className={cx('title')}>TRANG SỨC </h2>
+                    <h2 className={cx('title')}>PHONG CÁCH SỐNG</h2>
                     <p className={cx('copy')}>
                         Trang sức là một trong những món phụ kiện giúp tôn lên vẻ đẹp của bộ trang phục và cá tính của
                         người đeo. Để trang bị một bộ trang sức hoàn chỉnh từ bông tai, dây chuyền, tới vòng tay, nhẫn…
@@ -55,7 +55,7 @@ export default function name() {
             </div>
             <div className={cx('card')}>
                 <div className={cx('content')}>
-                    <h2 className={cx('title')}>CÔNG NGHỆ</h2>
+                    <h2 className={cx('title')}>SỨC KHỎE</h2>
                     <p className={cx('copy')}>
                         Thay vì bỏ ra số tiền lớn từ vài triệu đến vài chục triệu để mua một thiết bị công nghệ xịn sò
                         phục vụ cho công việc, giải trí thì hiện nay bạn hoàn toàn có thể tìm đến những đơn vị dịch vụ
