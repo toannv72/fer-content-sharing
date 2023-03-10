@@ -1,0 +1,44 @@
+{
+  "user": [
+    {
+      "username": "toansola",
+      "password": "1111112",
+      "email": "toansola17122000@gmail.com",
+      "id": 1
+    },
+    {
+      "username": "toansola",
+      "password": "11111",
+      "email": "toansola17122000@gmail.com",
+      "id": 2
+    },
+    {
+      "username": "toansola",
+      "password": "11111",
+      "email": "toansola17122000@gmail.com",
+      "id": 3
+    },
+    {
+      "username": "toansola",
+      "password": "11111",
+      "email": "toansola17122000@gmail.com",
+      "id": 4
+    },
+    {
+      "username": "toansola",
+      "password": "11111",
+      "email": "toansola17122000@gmail.com",
+      "id": 5
+    }
+  ],
+  "blog": [
+    {
+      "id": 1,
+      "img": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

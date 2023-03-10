@@ -74,7 +74,7 @@ function Header() {
         {
             icon: <FontAwesomeIcon icon={faUser} />,
             title: 'View profile',
-            to: '/you',
+            to: '/@:minh',
         },
         {
             icon: <FontAwesomeIcon icon={faGear} />,
