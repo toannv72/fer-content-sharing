@@ -1,0 +1,19 @@
+.wrapper {
+    width: 250px;
+    padding: 20px 0 26px 8px;
+    margin-left: -18px;
+    margin-left: 29px;
+    position: absolute;
+    transform: translateX(-50px);
+    transition: all 0.3s ease-in-out;
+}
+
+ @media (max-width: 740px) {
+
+     /* styles cho khi trình duyệt có chiều rộng <= 767px */
+    .wrapper {
+            width: 0px;
+           
+        }
+   
+ }
