@@ -12,6 +12,7 @@ import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
 import Blog from '~/pages/Blog';
 import Tiem from '~/pages/Tiem';
+import Login from '~/pages/Login';
 
 // Public routes
 const publicRoutes = [
@@ -19,6 +20,7 @@ const publicRoutes = [
     { path: config.routes.sanpham, component: SanPham },
     { path: config.routes.live, component: Live },
     { path: config.routes.blog, component: Blog },
+    { path: config.routes.login, component: Login, layout: HeaderOnly },
     { path: config.routes.profile, component: Profile },
     { path: config.routes.chutiem, component: Tiem },
     { path: config.routes.upload, component: Upload, layout: HeaderOnly },

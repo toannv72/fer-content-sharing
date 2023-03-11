@@ -58,7 +58,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const currentUser = true;
+    const currentUser = false;
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -103,11 +103,11 @@ function Header() {
                     {currentUser ? (
                         <>
                             <Tippy delay={[0, 50]} content="Upload blog" placement="bottom">
-                                    <Link to="/upload">
-                                <button className={cx('action-btn')}>
+                                <Link to="/upload">
+                                    <button className={cx('action-btn')}>
                                         <UploadIcon />
-                                </button>
-                                    </Link>
+                                    </button>
+                                </Link>
                             </Tippy>
 
                             {/* <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
@@ -119,10 +119,13 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button text>
-                                <Link to="./upload">Upload</Link>
-                            </Button>
-                            <Button primary>Log in</Button>
+                                <Button text>
+                                    Upload
+                                </Button>
+                            <Link to="/login">Log in
+                                <Button primary>
+                                </Button>
+                            </Link>
                         </>
                     )}
 

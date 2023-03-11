@@ -7,6 +7,7 @@ const routes = {
     live: '/live',
     blog: '/blog',
     chutiem: '/chu-tiem',
+    login: '/login',
 };
 
 export default routes;
