@@ -19,38 +19,38 @@ import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
-import { InboxIcon, UploadIcon } from '~/components/Icons';
+import {  UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
 
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
-    {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
-        title: 'English',
-        children: {
-            title: 'Language',
-            data: [
-                {
-                    type: 'language',
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-            ],
-        },
+    // {
+    //     icon: <FontAwesomeIcon icon={faEarthAsia} />,
+    //     title: 'English',
+    //     children: {
+    //         title: 'Language',
+    //         data: [
+    //             {
+    //                 type: 'language',
+    //                 code: 'en',
+    //                 title: 'English',
+    //             },
+    //             {
+    //                 type: 'language',
+    //                 code: 'vi',
+    //                 title: 'Tiếng Việt',
+    //             },
+    //         ],
+    //     },
 
-    },
-    {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
-        title: 'Feedback and help',
-        to: '/feedback',
-    },
+    // },
+    // {
+    //     icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+    //     title: 'Feedback and help',
+    //     to: '/feedback',
+    // },
     // {
     //     icon: <FontAwesomeIcon icon={faKeyboard} />,
     //     title: 'Keyboard shortcuts',
@@ -58,7 +58,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const currentUser = false;
+    const currentUser = true;
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -119,14 +119,12 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button text>
-                                Upload
-                            </Button>
-
-                            <Button primary>
-                                <Link to="/login">Log in</Link>
-                            </Button>
-
+                            <Link to="/login">
+                                <Button text>Upload</Button>
+                            </Link>
+                            <Link to="/login">
+                                <Button primary>Log in</Button>
+                            </Link>
                         </>
                     )}
 
