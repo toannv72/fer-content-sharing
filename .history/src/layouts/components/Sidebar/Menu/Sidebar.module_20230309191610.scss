@@ -1,0 +1,21 @@
+.wrapper {
+    width: 356px;
+    padding: 20px 0 16px 8px;
+    margin-left: 29px;
+    position: absolute;
+    transform: translateX(-50px);
+    transition: all 0.3s ease-in-out;
+}
+
+footer {
+  width: 356px;
+  padding: 20px 0 16px 8px;
+  position: absolute;
+  margin-left: 10px;
+  color: #0e0202;
+  padding: 100px 0 1000px;
+  border-top-left-radius: 125px;
+  font-size: 13px;
+  line-height: 35px;
+}
+

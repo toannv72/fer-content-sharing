@@ -1,0 +1,17 @@
+.wrapper {
+    width: 356px;
+    padding: 20px 0 16px 8px;
+    margin-left: 29px;
+    position: absolute;
+    transform: translateX(-50px);
+  transition: all 0.3s ease-in-out;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f7f7f7;
+  padding: 10px;
+  text-align: center;
+}

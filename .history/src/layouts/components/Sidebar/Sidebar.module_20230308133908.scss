@@ -1,0 +1,21 @@
+.wrapper {
+    width: 356px;
+    padding: 20px 0 16px 8px;
+    margin-left: -18px;
+    position: absolute;
+    transform: translateX(-50px);
+        /* hoặc giá trị transform tùy ý để dịch chuyển Sidebar về bên trái */
+        transition: all 0.3s ease-in-out;
+}
+.menu-item {
+    width: 100%;
+    /* chiều rộng của menu item để đảm bảo nó vẫn hiển thị đầy đủ */
+    justify-content: center;
+    /* căn giữa nội dung menu item */
+}
+
+/* định dạng icon */
+.menu-item-icon {
+    margin-right: 0;
+    /* xoá margin bên phải của icon */
+}

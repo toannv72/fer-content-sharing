@@ -1,0 +1,9 @@
+.wrapper {
+    width: 356px;
+    padding: 20px 0 16px 8px;
+    margin-left: -18px;
+    position: absolute;
+    transform: translateX(-50px); /* hoặc giá trị transform tùy ý để dịch chuyển Sidebar về bên trái */
+  transition: all 0.3s ease-in-out;
+}
+
