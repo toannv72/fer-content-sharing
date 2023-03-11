@@ -1,9 +1,25 @@
+import { Link } from 'react-router-dom';
 import styles from './HomeBlog.module.scss';
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 function HomeBlog() {
+
+     const [posts, setPosts] = useState([]);
+
+     useEffect(() => {
+         axios
+             .get('/api/posts')
+             .then((response) => {
+                 setPosts(response.data);
+             })
+             .catch((error) => {
+                 console.log(error);
+             });
+     }, []);
     return (
         <p>
 
