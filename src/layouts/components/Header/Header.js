@@ -119,13 +119,14 @@ function Header() {
                         </>
                     ) : (
                         <>
-                                <Button text>
-                                    Upload
-                                </Button>
-                            <Link to="/login">Log in
-                                <Button primary>
-                                </Button>
-                            </Link>
+                            <Button text>
+                                Upload
+                            </Button>
+
+                            <Button primary>
+                                <Link to="/login">Log in</Link>
+                            </Button>
+
                         </>
                     )}
 

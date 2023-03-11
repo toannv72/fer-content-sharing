@@ -210,7 +210,7 @@ function Login() {
                     <div className={`switch__circle ${cnt4}`}></div>
                     <div className={`switch__circle switch__circle--t ${cnt4}`}></div>
                     <div className={`switch__container ${cnt5}`} id={`switch-c1 `}>
-                        <h2 className="switch__title title">Chào mừng bạn đã quay trở lại Thuê Đồ</h2>
+                        <h2 className="switch__title title">Chào mừng bạn đã quay trở lại Nơi Chia Sẻ Thông Tin </h2>
                         <p className="switch__description description">
                             Bạn đã có tài khoản? Hãy đăng nhập ở đây nhé!
                         </p>
@@ -236,7 +236,7 @@ function Login() {
                         </button>
                     </div>
                     <div className={`switch__container ${cnt3}`} id="switch-c2">
-                        <h2 className="switch__title title">Chào mừng bạn đến với Thuê Đồ</h2>
+                        <h2 className="switch__title title">Chào mừng bạn đến với Nơi Chia Sẻ Thông Tin</h2>
                         <p className="switch__description description">
                             Bạn chưa có tài khoản? Hãy đăng ký ở đây nhé!
                         </p>
