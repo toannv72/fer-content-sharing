@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Post from '../Blog/post/Post';
 import ErrorToast from '../ErrorToast/ErrorToast';
+import { Pagination } from '@mui/material';
 
 const cx = classNames.bind(styles);
 function HomeBlog() {
@@ -14,18 +15,23 @@ function HomeBlog() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
     // console.log(items);
+    const [totalPage, setTotalPage] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageChange = (event, value) => {
+        window.scrollTo(0, 0);
+        setCurrentPage(value);
+
+        // console.log(value);
+    };
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BASE_URLS}blog/getAllBlog?page=0&size=2&sort=id%2Cdesc`)
-            .then(
-                (res) =>( 
-                    res.json()
-                )
-            )
+        fetch(`${process.env.REACT_APP_BASE_URLS}blog/getAllBlog?page=${currentPage - 1}&size=2&sort=id%2Cdesc`)
+            .then((res) => res.json())
             .then(
                 (result) => {
                     setIsLoaded(true);
                     setItems(result);
                     // console.log(result);
+                    setTotalPage(result.totalPage);
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -37,9 +43,8 @@ function HomeBlog() {
             .catch((error) => {
                 setIsLoaded(true);
                 setError(error.message);
-                console.log(" sai rồi kìa");
             });
-    }, []);
+    }, [currentPage]);
 
     // console.log(error);
     if (error) {
@@ -48,21 +53,32 @@ function HomeBlog() {
         return <div>Loading...</div>;
     } else {
         return (
-            <div className="posts" style={{ flexWraprap: 'wrap', justifyContent: 'center' }}>
-                {!items.error ? (
-                    items.map((item) => (
-                        <Post
-                            key={item.id}
-                            title={item.title}
-                            img={item.imageTitle}
-                            writing={item.description}
-                            id={item.id}
-                        />
-                    ))
-                ) : (
-                    <h1>không có blog</h1>
-                )}
-            </div>
+            <>
+                <div className="posts" style={{ flexWraprap: 'wrap', justifyContent: 'center' }}>
+                    {!items.error ? (
+                        items.contends.map((item) => (
+                            <Post
+                                key={item.id}
+                                title={item.title}
+                                img={item.imageTitle}
+                                writing={item.description}
+                                id={item.id}
+                            />
+                        ))
+                    ) : (
+                        <h1>không có blog</h1>
+                    )}
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+                    <Pagination
+                        count={totalPage}
+                        page={currentPage}
+                        onChange={handlePageChange}
+                        variant="outlined"
+                        shape="rounded"
+                    />
+                </div>
+            </>
         );
     }
 }
