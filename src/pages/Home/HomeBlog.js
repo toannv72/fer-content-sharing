@@ -1,9 +1,6 @@
-import { Link } from 'react-router-dom';
 import styles from './HomeBlog.module.scss';
 import classNames from 'classnames/bind';
 import { useState } from 'react';
-import axios from 'axios';
-
 import { useEffect } from 'react';
 import Post from '../Blog/post/Post';
 import ErrorToast from '../ErrorToast/ErrorToast';
@@ -24,7 +21,7 @@ function HomeBlog() {
         // console.log(value);
     };
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BASE_URLS}blog/getAllBlog?page=${currentPage - 1}&size=2&sort=id%2Cdesc`)
+        fetch(`${process.env.REACT_APP_BASE_URLS}blog/getAllBlog?page=${currentPage - 1}&size=4&sort=id%2Cdesc`)
             .then((res) => res.json())
             .then(
                 (result) => {
@@ -54,17 +51,29 @@ function HomeBlog() {
     } else {
         return (
             <>
-                <div className="posts" style={{ flexWraprap: 'wrap', justifyContent: 'center' }}>
+                <div className="posts" style={{ flex: 9, flexWrap: 'wrap', justifyContent: 'center', display: "flex", margin: 20 }}>
                     {!items.error ? (
-                        items.contends.map((item) => (
-                            <Post
-                                key={item.id}
-                                title={item.title}
-                                img={item.imageTitle}
-                                writing={item.description}
-                                id={item.id}
-                            />
-                        ))
+                        <>
+                            {items.contends.map((item) => (
+                                <>
+                                    <Post
+                                        key={item.id}
+                                        title={item.title}
+                                        img={item.imageTitle}
+                                        writing={item.description}
+                                        id={item.id}
+                                    />
+                                </>
+                            ))}
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}
+                            ></div>
+                        </>
                     ) : (
                         <h1>không có blog</h1>
                     )}
