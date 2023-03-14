@@ -13,6 +13,7 @@ import Search from '~/pages/Search';
 import Blog from '~/pages/Blog';
 import Tiem from '~/pages/Tiem';
 import Login from '~/pages/Login';
+import SingleBlog from '~/pages/SingleBlog/SingleBlog';
 
 // Public routes
 const publicRoutes = [
@@ -25,6 +26,8 @@ const publicRoutes = [
     { path: config.routes.chutiem, component: Tiem },
     { path: config.routes.upload, component: Upload, layout: HeaderOnly },
     { path: config.routes.search, component: Search, layout: null },
+    { path: config.routes.singleBlog, component: SingleBlog },
+
 ];
 
 const privateRoutes = [];

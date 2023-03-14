@@ -11,7 +11,7 @@ export default function Post({ title, img, writing, hour, id }) {
 
     return (
         <div className="post">
-            <Link to={`/post:${id}`} className="link">
+            <Link to={`/singleBlog/${id}`} className="link">
                 <div className="postImg1">
                     <img className="postImg" src={img} alt="" />
                 </div>

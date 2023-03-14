@@ -8,6 +8,7 @@ const routes = {
     blog: '/blog',
     chutiem: '/chu-tiem',
     login: '/login',
+    singleBlog: '/singleBlog/:id'
 };
 
 export default routes;

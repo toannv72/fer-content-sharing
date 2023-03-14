@@ -20,6 +20,7 @@ function HomeBlog() {
 
         // console.log(value);
     };
+
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BASE_URLS}blog/getAllBlog?page=${currentPage - 1}&size=4&sort=id%2Cdesc`)
             .then((res) => res.json())
