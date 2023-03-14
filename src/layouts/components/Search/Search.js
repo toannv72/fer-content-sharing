@@ -5,6 +5,8 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 
 import * as searchServices from '~/services/searchService';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
+import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
 import { useDebounce } from '~/hooks';
 import styles from './Search.module.scss';
@@ -21,23 +23,22 @@ function Search() {
 
     const inputRef = useRef();
 
-    // useEffect(() => {
-    //     if (!debouncedValue.trim()) {
-    //         setSearchResult([]);
-    //         return;
-    //     }
+    useEffect(() => {
+        if (!debouncedValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
 
-    //     const fetchApi = async () => {
-    //         setLoading(true);
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await fetch(`${process.env.REACT_APP_BASE_URLS}blog/${searchValue}?page=0&size=20`);
+            const data = await result.json();
+            setSearchResult(data.contends);
+            setLoading(false);
+        };
 
-    //         const result = await searchServices.search(debouncedValue);
-
-    //         setSearchResult(result);
-    //         setLoading(false);
-    //     };
-
-    //     fetchApi();
-    // }, [debouncedValue]);
+        fetchApi();
+    }, [debouncedValue]);
 
     const handleClear = () => {
         setSearchValue('');
@@ -55,7 +56,12 @@ function Search() {
             setSearchValue(searchValue);
         }
     };
-
+    const handleSearch = (event) => {
+        if (event.key === 'Enter') {
+            window.location.href = `/search:${searchValue}`;
+        }
+    };
+    console.log(searchResult);
     return (
         // Using a wrapper <div> tag around the reference element solves
         // this by creating a new parentNode context.
@@ -63,17 +69,27 @@ function Search() {
             <HeadlessTippy
                 interactive
                 visible={showResult && searchResult.length > 0}
-                render={(attrs) => <div className={cx('search-result')} tabIndex="-1" {...attrs}></div>}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>Blog</h4>
+                            {searchResult.map((result, index) =>
+                                index <= 3 ? <AccountItem key={index} data={result} /> : null,
+                            )}
+                        </PopperWrapper>
+                    </div>
+                )}
                 onClickOutside={handleHideResult}
             >
                 <div className={cx('search')}>
                     <input
                         ref={inputRef}
                         value={searchValue}
-                        placeholder="Tìm kiếm "
+                        placeholder="Tìm kiếm Blog..."
                         spellCheck={false}
                         onChange={handleChange}
                         onFocus={() => setShowResult(true)}
+                        onKeyPress={handleSearch}
                     />
                     {!!searchValue && !loading && (
                         <button className={cx('clear')} onClick={handleClear}>
@@ -81,10 +97,17 @@ function Search() {
                         </button>
                     )}
                     {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-
-                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
-                        <SearchIcon />
-                    </button>
+                    {searchValue ? (
+                        <a href={`/search:${searchValue}`}>
+                            <button className={cx('search-btn')} type="button">
+                                <SearchIcon />
+                            </button>
+                        </a>
+                    ) : (
+                        <button className={cx('search-btn')}>
+                            <SearchIcon />
+                        </button>
+                    )}
                 </div>
             </HeadlessTippy>
         </div>
