@@ -25,7 +25,7 @@ const publicRoutes = [
     { path: config.routes.profile, component: Profile },
     { path: config.routes.chutiem, component: Tiem },
     { path: config.routes.upload, component: Upload, layout: HeaderOnly },
-    { path: config.routes.search, component: Search, layout: null },
+    { path: config.routes.search, component: Search},
     { path: config.routes.singleBlog, component: SingleBlog },
 
 ];

@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 
 function AccountItem({ data }) {
     return (
-        <a href={`/post:${data.id}`} className={cx('wrapper')}>
+        <a href={`/singleBlog/${data.id}`} className={cx('wrapper')}>
             <Image className={cx('avatar')} src={data.imageTitle} alt="" />
             <div className={cx('info')}>
                 <h4 className={cx('name')}>

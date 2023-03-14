@@ -58,7 +58,7 @@ function Search() {
     };
     const handleSearch = (event) => {
         if (event.key === 'Enter') {
-            window.location.href = `/search:${searchValue}`;
+            window.location.href = `/search/${searchValue}`;
         }
     };
     console.log(searchResult);
@@ -98,7 +98,7 @@ function Search() {
                     )}
                     {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
                     {searchValue ? (
-                        <a href={`/search:${searchValue}`}>
+                        <a href={`/search/${searchValue}`}>
                             <button className={cx('search-btn')} type="button">
                                 <SearchIcon />
                             </button>

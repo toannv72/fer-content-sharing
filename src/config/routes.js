@@ -3,7 +3,7 @@ const routes = {
     sanpham: '/san-pham',
     profile: '/@:you',
     upload: '/upload',
-    search: '/search',
+    search: '/search/:abc',
     live: '/live',
     blog: '/blog',
     chutiem: '/chu-tiem',
