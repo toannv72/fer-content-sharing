@@ -9,12 +9,10 @@ const routes = {
     chutiem: '/chu-tiem',
     login: '/login',
     singleBlog: '/singleBlog/:id',
-    logout:'/logout',
+    logout: '/logout',
 
+    about: '/about',
 
-
-
-    
     adminHome: '/admin/home',
 
     adminCreateProduct: '/admin/product/create',
@@ -24,7 +22,7 @@ const routes = {
     adminNotification: '/admin/notification',
     adminOrder: '/admin/order',
     adminUser: '/admin/user',
-    
+
     adminBlog: '/admin/blog',
     adminCreateBlog: '/admin/blog/create',
     adminBlogManagement: '/admin/blog/management',

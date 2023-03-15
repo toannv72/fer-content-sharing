@@ -23,55 +23,10 @@ function Sidebar() {
 
             <div className={cx('row')}>
                 <div className={cx('col')}>
-                    <p>STYLE</p>
-                </div>
-                <div className={cx('col')}>
-                    <h3>
-                        Office{' '}
-                        <div className="underline">
-                            <span />
-                        </div>{' '}
-                    </h3>
-
-                    <p className="email-id">ferr@gmail.com</p>
-                    <h4>+84 - 01234567890</h4>
-                </div>
-                <div className={cx('col')}>
-                    <h3>
-                        Links{' '}
-                        <div className="underline">
-                            <span />
-                        </div>
-                    </h3>
-                    <ul>
-                        <li>
-                            <a href="/services">Services</a>
-                        </li>
-                        <li>
-                            <a href="/about">About Us</a>
-                        </li>
-                        <li>
-                            <a href="/features">Features</a>
-                        </li>
-                        <li>
-                            <a href="/contacts">Contacts</a>
-                        </li>
-                    </ul>
-                </div>
-                <div className={cx('col')}>
-                    <h3>
-                        Newsletter{' '}
-                        <div className={cx('underline')}>
-                            <span />
-                        </div>
-                    </h3>
-                    <form>
-                        <i className="fa-regular fa-envelope" />
-                        <input type="email" placeholder="Enter your email id" required />
-                        <button type="submit">
-                            <i className="fa-solid fa-arrow-right" />
-                        </button>
-                    </form>
+                    <MenuItem title="LIÊN HỆ" to={config.routes.about} />
+                    <MenuItem title=" Giới Thiệu" to={config.routes.about} />
+                    <MenuItem title="Tin Tức " to={config.routes.about} />
+                    <MenuItem title=" Trợ Giúp" to={config.routes.about} />
                 </div>
             </div>
             <hr />
