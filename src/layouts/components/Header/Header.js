@@ -58,7 +58,8 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const currentUser = true;
+    // const currentUser = true;
+    const currentUser = localStorage.getItem('user'); 
 
     // Handle logic
     const handleMenuChange = (menuItem) => {

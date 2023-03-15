@@ -50,12 +50,15 @@ function HomeBlog() {
     } else if (!isLoaded) {
         return <div>Loading...</div>;
     } else {
+        console.log(items);
         return (
             <>
                 <div className="posts" style={{ flex: 9, flexWrap: 'wrap', justifyContent: 'center', display: "flex", margin: 20 }}>
                     {!items.error ? (
                         <>
+                           
                             {items.contends.map((item) => (
+
                                 <>
                                     <Post
                                         key={item.id}
