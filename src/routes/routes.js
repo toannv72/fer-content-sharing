@@ -17,7 +17,6 @@ import SingleBlog from '~/pages/SingleBlog/SingleBlog';
 import Logout from '~/pages/Logout';
 import AdminLayout from '~/layouts/Admin/AdminLayout';
 
-import { HomeAdmin } from '~/admin/Home';
 import BlogAdmin from '~/admin/Blog/Blog';
 import { CreateBlogs } from '~/admin/Blog/CreateBlogs';
 import { BlogsManagement } from '~/admin/Blog/BlogsManagement';
@@ -36,7 +35,6 @@ const publicRoutes = [
     { path: config.routes.singleBlog, component: SingleBlog },
     { path: config.routes.logout, component: Logout },
 
-    { path: config.routes.adminHome, component: HomeAdmin, layout: AdminLayout },
     { path: config.routes.adminBlog, component: BlogAdmin, layout: AdminLayout },
     { path: config.routes.adminCreateBlog, component: CreateBlogs, layout: AdminLayout },
     { path: config.routes.adminBlogManagement, component: BlogsManagement, layout: AdminLayout },

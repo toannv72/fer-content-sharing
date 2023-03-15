@@ -9,26 +9,40 @@ import axios from 'axios';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { storage } from '~/configs/firebase';
 import { v4 } from 'uuid';
+import React from 'react';
+import { EditorState, convertToRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import draftToHtml from 'draftjs-to-html';
+import { CircularProgress } from '@mui/material';
 
 const cx = classNames.bind(styles);
 export default function CreateProducts() {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
-    const [description, setDescription] = useState('');
+    const [description, setDescription] = useState(EditorState.createEmpty());
     const [imageTitle, setImageTitle] = useState('');
     const [imageCover, setImageCover] = useState('');
+    const [circular, setCircular] = useState(false);
 
     const [toan, setToan] = useState(false);
-
     const handleSubmit = () => {
-        const product = { title, author, description, imageTitle, imageCover };
-        console.log(product);
         axios
-            .post(`${process.env.REACT_APP_BASE_URLS}blog/create`, product)
+            .post(`${process.env.REACT_APP_BASE_URLS}blog/create`, {
+                title,
+                author,
+                description: draftToHtml(convertToRaw(description.getCurrentContent())),
+                imageTitle,
+                imageCover,
+            })
             .then((response) => {
                 if (response.status === 200) {
+                    console.log(imageTitle, imageCover);
+                    setCircular(false);
+
                     toast.success(`Thêm blog thành công!`);
                 } else {
+                    setCircular(false);
+
                     toast.error(`Thêm blog không thành công!`);
                 }
             })
@@ -43,58 +57,45 @@ export default function CreateProducts() {
 
     const upImg = () => {
         // if (img == null && img1 == null) return;
-
+        
         // console.log(category.id);
         if (img == null || img1 == null || title < 0 || author === '' || description === '') {
             return toast.error(`vui lòng nhập đầy đủ thông tin !`);
         }
+        setCircular(true);
+
         const urls = [];
         const urls1 = [];
 
-        const imagerRef = ref(storage, `images/${img[0].name + v4()}`);
-        uploadBytes(imagerRef, img[0]).then(() => {
-            getDownloadURL(imagerRef).then((url) => {
-                // setImages([...images, { url: url }]);
-                urls.push({ url: url });
-                //    console.log(images); // Được thực thi khi state đã được cập nhật
-                // console.log(url); // in ra đường dẫn của ảnh
-                // console.log(index);
-                // console.log(img.length);
-                setImageTitle(url);
+        for (let index = 0; index < img.length; index++) {
+            const imagerRef = ref(storage, `images/${img[index].name + v4()}`);
+            // eslint-disable-next-line no-loop-func
+            uploadBytes(imagerRef, img[index]).then(() => {
+                getDownloadURL(imagerRef).then((url) => {
+                    urls.push({ url: url });
+                    if (img.length === urls.length) {
+                        setImageTitle(url);
+                        for (let index = 0; index < img1.length; index++) {
+                            const imagerRef = ref(storage, `images/${img1[index].name + v4()}`);
+                            // eslint-disable-next-line no-loop-func
+                            uploadBytes(imagerRef, img1[index]).then(() => {
+                                getDownloadURL(imagerRef).then((url) => {
+                                    urls1.push({ url: url });
+                                    if (img1.length === urls1.length) {
+                                        setImageCover(url);
+                                        setToan(true);
+                                    }
+                                });
+                            });
+                        }
+                    }
+                });
+            });
+        }
 
-            });
-        });
-        const imagerRef1 = ref(storage, `images/${img1[0].name + v4()}`);
-        uploadBytes(imagerRef1, img1[0]).then(() => {
-            getDownloadURL(imagerRef1).then((url) => {
-                // setImages([...images, { url: url }]);
-                urls1.push({ url: url });
-                //    console.log(images); // Được thực thi khi state đã được cập nhật
-                // console.log(url); // in ra đường dẫn của ảnh
-                // console.log(index);
-                // console.log(img.length);
-                setToan(true);
-                setImageCover(url);
-            });
-        });
-        // for (let index = 0; index < img1.length; index++) {
-        //     const imagerRef1 = ref(storage, `images/${img1[index].name + v4()}`);
-        //     uploadBytes(imagerRef1, img1[index]).then(() => {
-        //         getDownloadURL(imagerRef1).then((url) => {
-        //             // setImages([...images, { url: url }]);
-        //             urls1.push({ url: url });
-        //             //    console.log(images); // Được thực thi khi state đã được cập nhật
-        //             // console.log(url); // in ra đường dẫn của ảnh
-        //             // console.log(index);
-        //             // console.log(img.length);
-        //             if (index === img1.length - 1) {
-        //                 setImageTitle(url);
-        //                 setToan(true);
-        //             }
-        //         });
-        //     });
-        // }
+        // setImages(urls);
     };
+
     // console.log(images);
     useEffect(() => {
         if (toan) {
@@ -102,6 +103,9 @@ export default function CreateProducts() {
             // console.log('toan');
         }
     }, [toan]);
+    function onEditorStateChange(editorState) {
+        setDescription(editorState);
+    }
     return (
         <>
             <Menu>
@@ -166,7 +170,7 @@ export default function CreateProducts() {
                                 Nội dung
                             </label>
                             <div className="col-md-8">
-                                <div className="col-md-4 indent-small">
+                                <div className="col-md-8 indent-small">
                                     <div className="form-group internal">
                                         {/* <textarea
                                             className="form-control"
@@ -176,13 +180,22 @@ export default function CreateProducts() {
                                             value={description}
                                             onChange={(event) => setDescription(event.target.value)}
                                         /> */}
-                                        <textarea
+                                        {/* <textarea
                                             onChange={(event) => setDescription(event.target.value)}
                                             className="form-control"
                                             id="id_comments"
                                             placeholder="Nội dung Blog"
                                             rows="5"
-                                        ></textarea>
+                                        ></textarea> */}
+                                        <div style={{ backgroundColor: '#fff' }}>
+                                            <Editor
+                                                editorState={description}
+                                                wrapperClassName="demo-wrapper"
+                                                editorClassName="demo-editor"
+                                                onEditorStateChange={onEditorStateChange}
+                                                placeholder="Nội dung Blog"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -228,6 +241,11 @@ export default function CreateProducts() {
                             </div>
                         </div>
                     </form>
+                    {circular && (
+                        <>
+                            <CircularProgress color="secondary" />
+                        </>
+                    )}
                     <div className="form-group">
                         <div className="col-md-offset-4 col-md-3">
                             <button className="btn-lg btn-primary" onClick={upImg}>
