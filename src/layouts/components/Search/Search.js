@@ -3,8 +3,6 @@ import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-
-import * as searchServices from '~/services/searchService';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
@@ -26,6 +24,8 @@ function Search() {
     useEffect(() => {
         if (!debouncedValue.trim()) {
             setSearchResult([]);
+            console.log('data');
+
             return;
         }
 
@@ -33,6 +33,7 @@ function Search() {
             setLoading(true);
             const result = await fetch(`${process.env.REACT_APP_BASE_URLS}blog/${searchValue}?page=0&size=20`);
             const data = await result.json();
+            console.log(data);
             setSearchResult(data.contends);
             setLoading(false);
         };
@@ -58,7 +59,9 @@ function Search() {
     };
     const handleSearch = (event) => {
         if (event.key === 'Enter') {
-            window.location.href = `/search/${searchValue}`;
+            if (searchValue) {
+                window.location.href = `/search/${searchValue}`;
+            }
         }
     };
     console.log(searchResult);

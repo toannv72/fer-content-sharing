@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import Post from '../Blog/post/Post';
 import ErrorToast from '../ErrorToast/ErrorToast';
 import { Pagination } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 function Search() {
@@ -24,7 +25,8 @@ function Search() {
 
         // console.log(value);
     };
-
+  const abc = useLocation();
+  console.log(abc);
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BASE_URLS}blog/${lastPart}?page=${currentPage - 1}&size=4`)
             .then((res) => res.json())
@@ -46,7 +48,7 @@ function Search() {
                 setIsLoaded(true);
                 setError(error.message);
             });
-    }, [currentPage]);
+    }, [currentPage, lastPart]);
 
     // console.log(error);
     if (error) {
