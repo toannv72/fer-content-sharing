@@ -59,7 +59,7 @@ export default function CreateProducts() {
         // if (img == null && img1 == null) return;
         
         // console.log(category.id);
-        if (img == null || img1 == null || title < 0 || author === '' || description === '') {
+        if (img == null || img1 == null || title === '' || author === '' || description === '') {
             return toast.error(`vui lòng nhập đầy đủ thông tin !`);
         }
         setCircular(true);
@@ -68,18 +68,18 @@ export default function CreateProducts() {
         const urls1 = [];
 
         for (let index = 0; index < img.length; index++) {
-            const imagerRef = ref(storage, `images/${img[index].name + v4()}`);
+            const imageRef = ref(storage, `images/${img[index].name + v4()}`);
             // eslint-disable-next-line no-loop-func
-            uploadBytes(imagerRef, img[index]).then(() => {
-                getDownloadURL(imagerRef).then((url) => {
+            uploadBytes(imageRef, img[index]).then(() => {
+                getDownloadURL(imageRef).then((url) => {
                     urls.push({ url: url });
                     if (img.length === urls.length) {
                         setImageTitle(url);
                         for (let index = 0; index < img1.length; index++) {
-                            const imagerRef = ref(storage, `images/${img1[index].name + v4()}`);
+                            const imageRef = ref(storage, `images/${img1[index].name + v4()}`);
                             // eslint-disable-next-line no-loop-func
-                            uploadBytes(imagerRef, img1[index]).then(() => {
-                                getDownloadURL(imagerRef).then((url) => {
+                            uploadBytes(imageRef, img1[index]).then(() => {
+                                getDownloadURL(imageRef).then((url) => {
                                     urls1.push({ url: url });
                                     if (img1.length === urls1.length) {
                                         setImageCover(url);
@@ -139,7 +139,13 @@ export default function CreateProducts() {
                                             placeholder="Tiêu đề"
                                             type="text"
                                             value={title}
-                                            onChange={(event) => setTitle(event.target.value)}
+                                            onChange={(event) =>
+                                                !event.target.value.startsWith(' ') ? (
+                                                    setTitle(event.target.value)
+                                                ) : (
+                                                    <></>
+                                                )
+                                            }
                                         />
                                     </div>
                                 </div>
@@ -158,7 +164,13 @@ export default function CreateProducts() {
                                             placeholder="Tác giả"
                                             type="text"
                                             value={author}
-                                            onChange={(event) => setAuthor(event.target.value)}
+                                            onChange={(event) =>
+                                                !event.target.value.startsWith(' ') ? (
+                                                    setAuthor(event.target.value)
+                                                ) : (
+                                                    <></>
+                                                )
+                                            }
                                         />
                                     </div>
                                 </div>
@@ -172,22 +184,7 @@ export default function CreateProducts() {
                             <div className="col-md-8">
                                 <div className="col-md-8 indent-small">
                                     <div className="form-group internal">
-                                        {/* <textarea
-                                            className="form-control"
-                                            id="id_last_name"
-                                            placeholder="Nội dung Blog"
-                                            type="text"
-                                            value={description}
-                                            onChange={(event) => setDescription(event.target.value)}
-                                        /> */}
-                                        {/* <textarea
-                                            onChange={(event) => setDescription(event.target.value)}
-                                            className="form-control"
-                                            id="id_comments"
-                                            placeholder="Nội dung Blog"
-                                            rows="5"
-                                        ></textarea> */}
-                                        <div style={{ backgroundColor: '#fff' }}>
+                                        <div style={{ backgroundColor: '#fff'}}>
                                             <Editor
                                                 editorState={description}
                                                 wrapperClassName="demo-wrapper"

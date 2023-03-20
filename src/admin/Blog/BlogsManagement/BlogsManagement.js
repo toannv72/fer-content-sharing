@@ -14,8 +14,10 @@ import { v4 } from 'uuid';
 import { Button, Dialog, DialogActions, Pagination } from '@mui/material';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
-import { convertToRaw } from 'draft-js';
+import { convertToRaw, EditorState, ContentState } from 'draft-js';
+
 import moment from 'moment';
+import DOMPurify from 'dompurify';
 const cx = classNames.bind(styles);
 export default function BlogsManagement() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -65,6 +67,7 @@ export default function BlogsManagement() {
             setProductToDelete(null);
         }
     };
+    console.log(description);
 
     const confirmEdit = () => {
         const updatedProduct = {
@@ -122,7 +125,7 @@ export default function BlogsManagement() {
         if (searchTerm !== '') {
             fetchSearchResults();
         }
-    }, [searchTerm, productToDelete, currentPage]);
+    }, [searchTerm, productToDelete, currentPage, showEditConfirmation]);
     useEffect(() => {
         const fetchSearchResults = async () => {
             const response = await fetch(
@@ -282,8 +285,18 @@ export default function BlogsManagement() {
                                             data-toggle="modal"
                                             data-target="#ModalUP"
                                             onClick={() => {
-                                                setProductToEdit(result.id);
                                                 handleEdit();
+                                                setProductToEdit(result.id);
+                                                setAuthor(result.author);
+                                                setTitle(result.title);
+                                                const plainTextDescription = DOMPurify.sanitize(result.description, {
+                                                    ALLOWED_TAGS: [],
+                                                });
+                                                setDescription(
+                                                    EditorState.createWithContent(
+                                                        ContentState.createFromText(plainTextDescription),
+                                                    ),
+                                                );
                                             }}
                                         >
                                             <i className="fas fa-edit"></i>
@@ -304,54 +317,6 @@ export default function BlogsManagement() {
                     />
                 </div>
             </div>
-            {/* {showDeleteConfirmation && (
-                <div className={cx('contact-container')}>
-                    <div className="swal-modal" role="dialog" aria-modal="true">
-                        <div className="swal-title">
-                            <h1>Cảnh báo</h1>
-                        </div>
-                        <h2>Bạn có chắc chắn là muốn xóa sản phẩm này?</h2>
-                        <div className={cx('swal-footer')}>
-                            <button className={cx('button')} onClick={cancelDelete}>
-                                Hủy bỏ
-                            </button>
-
-                            <button className={cx('button1')} onClick={confirmDelete}>
-                                Đồng ý
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )} */}
-            {/* <Dialog
-                // maxWidth={1100}
-                // maxHeight={800}
-                open={showDeleteConfirmation}
-                // TransitionComponent={Transition}
-                keepMounted
-                onClose={cancelDelete}
-                aria-describedby="alert-dialog-slide-description"
-            >
-                <DialogActions>
-                    <div className={cx('contact-container')}>
-                        <div className="swal-modal" role="dialog" aria-modal="true">
-                            <div className="swal-title">
-                                <h1>Cảnh báo</h1>
-                            </div>
-                            <h2>Bạn có chắc chắn là muốn xóa sản phẩm này?</h2>
-                            <div className={cx('swal-footer')}>
-                                <button className={cx('button')} onClick={cancelDelete}>
-                                    Hủy bỏ
-                                </button>
-
-                                <button className={cx('button1')} onClick={confirmDelete}>
-                                    Đồng ý
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </DialogActions>
-            </Dialog> */}
 
             <Dialog
                 maxWidth={1100}
@@ -402,145 +367,160 @@ export default function BlogsManagement() {
                 aria-describedby="alert-dialog-slide-description"
             >
                 <DialogActions>
-                    <div className={cx('contact-container1')}>
-                        <div className="panel panel-primary dialog-panel">
-                            <div className="panel-heading">
-                                <h4>Thêm Sản Phẩm</h4>
-                            </div>
-                            <div className="panel-body">
-                                <form className="form-horizontal">
-                                    <div className="form-group">
-                                        <label className="control-label col-md-2 col-md-offset-2" htmlFor="id_title">
-                                            Tiêu đề
-                                        </label>
-                                        <div className="col-md-8">
-                                            <div className="col-md-8 indent-small">
-                                                <div className="form-group internal">
-                                                    <input
-                                                        className="form-control"
-                                                        id="id_last_name"
-                                                        placeholder="Tiêu đề"
-                                                        type="text"
-                                                        value={title}
-                                                        onChange={(event) => setTitle(event.target.value)}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label className="control-label col-md-2 col-md-offset-2" htmlFor="id_title">
-                                            Tác giả
-                                        </label>
-                                        <div className="col-md-8">
-                                            <div className="col-md-4 indent-small">
-                                                <div className="form-group internal">
-                                                    <input
-                                                        className="form-control"
-                                                        id="id_last_name"
-                                                        placeholder="Tác giả"
-                                                        type="text"
-                                                        value={author}
-                                                        onChange={(event) => setAuthor(event.target.value)}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label className="control-label col-md-2 col-md-offset-2" htmlFor="id_title">
-                                            Nội dung
-                                        </label>
-                                        <div className="col-md-8">
-                                            <div className="col-md-8 indent-small">
-                                                <div className="form-group internal">
-                                                    {/* <textarea
-                                            className="form-control"
-                                            id="id_last_name"
-                                            placeholder="Nội dung Blog"
-                                            type="text"
-                                            value={description}
-                                            onChange={(event) => setDescription(event.target.value)}
-                                        /> */}
-                                                    {/* <textarea
-                                                    onChange={(event) => setDescription(event.target.value)}
-                                                    className="form-control"
-                                                    id="id_comments"
-                                                    placeholder="Nội dung Blog"
-                                                    rows="5"
-                                                ></textarea> */}
-                                                    <div style={{ backgroundColor: '#fff' }}>
-                                                        <Editor
-                                                            editorState={description}
-                                                            wrapperClassName="demo-wrapper"
-                                                            editorClassName="demo-editor"
-                                                            placeholder="Miêu tả"
-                                                            onEditorStateChange={onEditorStateChange}
+                    <div>
+                       
+                            <div className="panel panel-primary dialog-panel">
+                                <div className="panel-heading">
+                                    <h4>Sửa Blog</h4>
+                                </div>
+                                <div className="panel-body">
+                                    <form className="form-horizontal">
+                                        <div className="form-group">
+                                            <label
+                                                className="control-label col-md-2 col-md-offset-2"
+                                                htmlFor="id_title"
+                                            >
+                                                Tiêu đề
+                                            </label>
+                                            <div className="col-md-8">
+                                                <div className="col-md-8 indent-small">
+                                                    <div className="form-group internal">
+                                                        <input
+                                                            className="form-control"
+                                                            id="id_last_name"
+                                                            placeholder="Tiêu đề"
+                                                            type="text"
+                                                            value={title}
+                                                            onChange={(event) =>
+                                                                !event.target.value.startsWith(' ') ? (
+                                                                    setTitle(event.target.value)
+                                                                ) : (
+                                                                    <></>
+                                                                )
+                                                            }
                                                         />
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label className="control-label col-md-2 col-md-offset-2" htmlFor="id_title">
-                                            Ảnh tiêu đề
-                                        </label>
-                                        <div className="col-md-8">
-                                            <div className="col-md-4 indent-small">
-                                                <div className="form-group internal">
-                                                    <input
-                                                        className="form-control"
-                                                        id="id_last_name"
-                                                        placeholder="Ảnh 3"
-                                                        type="file"
-                                                        onChange={(e) => {
-                                                            setImg(e.target.files);
-                                                        }}
-                                                    />
+                                        <div className="form-group">
+                                            <label
+                                                className="control-label col-md-2 col-md-offset-2"
+                                                htmlFor="id_title"
+                                            >
+                                                Tác giả
+                                            </label>
+                                            <div className="col-md-8">
+                                                <div className="col-md-4 indent-small">
+                                                    <div className="form-group internal">
+                                                        <input
+                                                            className="form-control"
+                                                            id="id_last_name"
+                                                            placeholder="Tác giả"
+                                                            type="text"
+                                                            value={author}
+                                                            onChange={(event) =>
+                                                                !event.target.value.startsWith(' ') ? (
+                                                                    setAuthor(event.target.value)
+                                                                ) : (
+                                                                    <></>
+                                                                )
+                                                            }
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label className="control-label col-md-2 col-md-offset-2" htmlFor="id_title">
-                                            Ảnh bìa
-                                        </label>
-                                        <div className="col-md-8">
-                                            <div className="col-md-4 indent-small">
-                                                <div className="form-group internal">
-                                                    <input
-                                                        className="form-control"
-                                                        id="id_last_name"
-                                                        placeholder="Ảnh 3"
-                                                        type="file"
-                                                        onChange={(e) => {
-                                                            setImg1(e.target.files);
-                                                        }}
-                                                    />
+
+                                        <div className="form-group">
+                                            <label
+                                                className="control-label col-md-2 col-md-offset-2"
+                                                htmlFor="id_title"
+                                            >
+                                                Nội dung
+                                            </label>
+                                            <div className="col-md-8">
+                                                <div className="col-md-8 indent-small">
+                                                    <div className="form-group internal">
+                                                    
+                                                        <div style={{ backgroundColor: '#fff' }}>
+                                                            <Editor
+                                                                editorState={description}
+                                                                wrapperClassName="demo-wrapper"
+                                                                editorClassName="demo-editor"
+                                                                placeholder="Miêu tả"
+                                                                onEditorStateChange={onEditorStateChange}
+                                                            />
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
-                                <div className="form-group">
-                                    <div className="col-md-offset-1 col-md-12">
-                                        <button
-                                            className="btn-lg btn-primary"
-                                            style={{ marginLeft: 100, marginRight: 100, background: 'red' }}
-                                            type="submit"
-                                            onClick={upImg}
-                                        >
-                                            Thay đổi
-                                        </button>
-                                        <button className="btn-lg btn-primary" type="submit" onClick={cancelEdit}>
-                                            Hủy
-                                        </button>
+                                        <div className="form-group">
+                                            <label
+                                                className="control-label col-md-2 col-md-offset-2"
+                                                htmlFor="id_title"
+                                            >
+                                                Ảnh tiêu đề
+                                            </label>
+                                            <div className="col-md-8">
+                                                <div className="col-md-4 indent-small">
+                                                    <div className="form-group internal">
+                                                        <input
+                                                            className="form-control"
+                                                            id="id_last_name"
+                                                            placeholder="Ảnh 3"
+                                                            type="file"
+                                                            onChange={(e) => {
+                                                                setImg(e.target.files);
+                                                            }}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="form-group">
+                                            <label
+                                                className="control-label col-md-2 col-md-offset-2"
+                                                htmlFor="id_title"
+                                            >
+                                                Ảnh bìa
+                                            </label>
+                                            <div className="col-md-8">
+                                                <div className="col-md-4 indent-small">
+                                                    <div className="form-group internal">
+                                                        <input
+                                                            className="form-control"
+                                                            id="id_last_name"
+                                                            placeholder="Ảnh 3"
+                                                            type="file"
+                                                            onChange={(e) => {
+                                                                setImg1(e.target.files);
+                                                            }}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div className="form-group">
+                                        <div className="col-md-offset-1 col-md-12">
+                                            <button
+                                                className="btn-lg btn-primary"
+                                                style={{ marginLeft: 100, marginRight: 100, background: 'red' }}
+                                                type="submit"
+                                                onClick={upImg}
+                                            >
+                                                Thay đổi
+                                            </button>
+                                            <button className="btn-lg btn-primary" type="submit" onClick={cancelEdit}>
+                                                Hủy
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                      
                     </div>
                 </DialogActions>
             </Dialog>
