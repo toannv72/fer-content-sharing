@@ -1,6 +1,6 @@
 const routes = {
     home: '/',
-    sanpham: '/san-pham',
+    share: '/share',
     profile: '/@:you',
     upload: '/upload',
     search: '/search/:abc',
