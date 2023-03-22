@@ -7,7 +7,7 @@ import ErrorToast from '../ErrorToast/ErrorToast';
 import { Pagination } from '@mui/material';
 
 const cx = classNames.bind(styles);
-function ShareBlogup() {
+function ShareBlog() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
