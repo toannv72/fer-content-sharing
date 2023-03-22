@@ -1,5 +1,6 @@
 .singlePost {
     flex: 9;
+    text-align: justify;
 }
 
 .singlePostWrapper {
@@ -56,6 +57,7 @@
     color: #666;
     font-size: 18px;
     line-height: 25px;
+    font-family: auto;
 }
 
 .singlePostDesc::first-letter {

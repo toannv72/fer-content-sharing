@@ -13,7 +13,7 @@ function Sidebar() {
             <Menu>
                 <MenuItem title="Home" to={config.routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
                 <MenuItem
-                    title="chia sẻ "
+                    title="Chia sẻ "
                     to={config.routes.share}
                     icon={<UserGroupIcon />}
                     activeIcon={<UserGroupActiveIcon />}
@@ -23,7 +23,7 @@ function Sidebar() {
 
             <div className={cx('row')}>
                 <div className={cx('col')}>
-                    <MenuItem title="LIÊN HỆ" to={config.routes.about} />
+                    <MenuItem title="Liên hệ" to={config.routes.about} />
                     <MenuItem title=" Giới Thiệu" to={config.routes.about} />
                     <MenuItem title="Tin Tức " to={config.routes.about} />
                     <MenuItem title=" Trợ Giúp" to={config.routes.about} />

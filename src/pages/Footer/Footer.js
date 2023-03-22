@@ -25,7 +25,7 @@ function Footer() {
 
                 <div className={cx('a2')}>
                     <img src={images.noImage} alt="" />
-                  Chia sẽ mọi thứ 
+                    Trở thành phiên bản tốt hơn mỗi ngày cùng Content Sharing 
                 </div>
 
                 <div className={cx('a3')}>
@@ -37,7 +37,7 @@ function Footer() {
                             <p>Tầng 3-Số 3 Thủ Đức-Hồ Chí Minh</p>
                             <p>1900333333</p>
                             <p>ihc@fpt.edu.vn</p>
-                            <p>MST:0106302932</p>{' '}
+
                         </a>
                     </div>
                     <div className={cx('a3-1')}>
@@ -57,7 +57,7 @@ function Footer() {
                             <p>Hướng dẫn </p>
                             <p>Đăng ký tài khoản</p>
                             <p>Chính sách </p>
-                            <p>Chính sách </p>{' '}
+
                         </a>
                     </div>
                 </div>

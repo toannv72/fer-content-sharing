@@ -37,6 +37,19 @@ export default function name() {
             </div>
             <div className={cx('card')}>
                 <div className={cx('content')}>
+                    <h2 className={cx('title')}>BÍ QUYẾT SỐNG</h2>
+                    <p className={cx('copy')}>
+                        Sức khỏe tốt là nền tảng cơ bản của một cuộc sống vui vẻ, hạnh phúc, là cơ sở quan trọng để
+                        mỗi người thực hiện ý tưởng, ước mơ, nguyện vọng của cuộc đời mình. Bởi nếu bệnh tật, ốm đau,
+                        chúng ta thường sẽ không còn đủ sức khỏe, tâm trí nào mà lo lắng, suy nghĩ đến những việc khác.
+                    </p>
+                    <a className={cx('btn')} href="/technology">
+                        Khám phá ngay
+                    </a>
+                </div>
+            </div>
+            <div className={cx('card')}>
+                <div className={cx('content')}>
                     <h2 className={cx('title')}>DU LỊCH</h2>
                     <p className={cx('copy')}>
                         Không chỉ là trải nghiệm, nghỉ ngơi, lợi ích của việc đi du lịch còn giúp chúng ta vun đắp thêm vốn sống, tình yêu quê hương,
@@ -49,19 +62,7 @@ export default function name() {
                     </a>
                 </div>
             </div>
-            <div className={cx('card')}>
-                <div className={cx('content')}>
-                    <h2 className={cx('title')}>BÍ QUYẾT SỐNG</h2>
-                    <p className={cx('copy')}>
-                        Sức khỏe tốt là nền tảng cơ bản của một cuộc sống vui vẻ, hạnh phúc, là cơ sở quan trọng để
-                        mỗi người thực hiện ý tưởng, ước mơ, nguyện vọng của cuộc đời mình. Bởi nếu bệnh tật, ốm đau,
-                        chúng ta thường sẽ không còn đủ sức khỏe, tâm trí nào mà lo lắng, suy nghĩ đến những việc khác.
-                    </p>
-                    <a className={cx('btn')} href="/technology">
-                        Khám phá ngay
-                    </a>
-                </div>
-            </div>
+
         </main>
     );
 }
