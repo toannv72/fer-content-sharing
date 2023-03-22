@@ -59,9 +59,9 @@ export default function BlogsManagement() {
             });
 
             if (response.ok) {
-                toast.success(`Xóa sản phẩm thành công!`);
+                toast.success(`Xóa blog thành công!`);
             } else {
-                toast.error(`Xóa sản phẩm không thành công!`);
+                toast.error(`Xóa blog không thành công!`);
             }
 
             setProductToDelete(null);
@@ -91,15 +91,15 @@ export default function BlogsManagement() {
             })
             .then((response) => {
                 if (response.status === 200) {
-                    toast.success(`Thay đổi sản phẩm thành công!`);
+                    toast.success(`Thay đổi blog thành công!`);
                 } else {
-                    toast.error(`Thay đổi sản phẩm không thành công!`);
+                    toast.error(`Thay đổi blog không thành công!`);
                 }
                 setShowEditConfirmation(false);
             })
             .catch((error) => {
                 console.log(error);
-                toast.error(`Thay đổi sản phẩm không thành công!`);
+                toast.error(`Thay đổi blog không thành công!`);
             });
         setToan(false);
     };
@@ -333,7 +333,7 @@ export default function BlogsManagement() {
                             <div className="">
                                 <h1>Cảnh báo</h1>
                             </div>
-                            <h2>Bạn có chắc chắn là muốn xóa sản phẩm này?</h2>
+                            <h2>Bạn có chắc chắn là muốn xóa blog này?</h2>
                             <div className={cx('swal-footer')}>
                                 <Button onClick={cancelDelete} style={{ background: '#0de667', color: 'white' }}>
                                     Hủy bỏ

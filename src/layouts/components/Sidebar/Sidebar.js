@@ -13,7 +13,7 @@ function Sidebar() {
             <Menu>
                 <MenuItem title="Home" to={config.routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
                 <MenuItem
-                    title="chia sẻ "
+                    title="Chia sẻ "
                     to={config.routes.sanpham}
                     icon={<UserGroupIcon />}
                     activeIcon={<UserGroupActiveIcon />}
