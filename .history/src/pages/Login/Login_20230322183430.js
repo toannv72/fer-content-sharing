@@ -117,7 +117,7 @@ function Login() {
                 // console.log('admin');
             } else {
                 console.log('user');
-                window.location.href = '/';
+                window.location.href = '/ ';
             }
         }
     };
