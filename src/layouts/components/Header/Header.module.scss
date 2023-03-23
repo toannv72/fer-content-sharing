@@ -18,7 +18,7 @@
 
 .inner {
     height: 100%;
-    width: var(--default-layout-width);
+    width: 1444px;
     padding: 0 var(--default-layout-horizontal-spacer);
     display: flex;
     align-items: center;
@@ -27,6 +27,7 @@
 
 .logo-link {
     height: 50px;
+
     display: flex;
 }
 

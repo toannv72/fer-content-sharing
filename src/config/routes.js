@@ -12,6 +12,7 @@ const routes = {
     logout: '/logout',
 
     about: '/about',
+    information: '/information',
     password: '/settings',
 
     adminHome: '/admin/home',

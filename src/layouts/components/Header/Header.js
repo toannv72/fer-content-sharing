@@ -24,6 +24,7 @@ import Image from '~/components/Image';
 import Search from '../Search';
 
 const cx = classNames.bind(styles);
+    const imgUser = JSON.parse(localStorage.getItem('user'));
 
 const MENU_ITEMS = [
     // {
@@ -134,10 +135,10 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <Image
+                            <img
                                 className={cx('user-avatar')}
-                                src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.6435-9/178385695_485871159115663_5746834068787279790_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=174925&_nc_ohc=JcE8C0eoXAkAX_b6xXP&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfCCL_x7m6YissQpe4LtIjz2IN3Wxr8oLhLP1Obj16Y7zQ&oe=63E377F7"
-                                alt="Nguyen Van A"
+                                src={imgUser.avatar ? imgUser.avatar : images.noImage}
+                                alt=""
                             />
                         ) : (
                             <button className={cx('more-btn')}>

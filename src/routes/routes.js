@@ -22,6 +22,8 @@ import { CreateBlogs } from '~/admin/Blog/CreateBlogs';
 import { BlogsManagement } from '~/admin/Blog/BlogsManagement';
 import About from '~/pages/About';
 import Password from '~/pages/Setting/Password';
+import DefaultLayout2 from '~/layouts/components/DefaultLayout2';
+import Information from '~/pages/Setting/Information';
 
 // Public routes
 const publicRoutes = [
@@ -36,8 +38,8 @@ const publicRoutes = [
     { path: config.routes.search, component: Search },
     { path: config.routes.singleBlog, component: SingleBlog },
     { path: config.routes.logout, component: Logout },
-    { path: config.routes.password, component: Password, },
-
+    { path: config.routes.password, component: Password, layout: DefaultLayout2 },
+    { path: config.routes.information, component: Information, layout: DefaultLayout2 },
     { path: config.routes.about, component: About },
     { path: config.routes.adminBlog, component: BlogAdmin, layout: AdminLayout },
     { path: config.routes.adminCreateBlog, component: CreateBlogs, layout: AdminLayout },
