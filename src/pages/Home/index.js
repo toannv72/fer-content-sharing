@@ -16,7 +16,7 @@ function ControlledCarousel() {
     return (
         <div>
             <Home />
-            <h2 class="">Xem gì hôm nay</h2>
+            {/* <h2 class="">Xem gì hôm nay</h2> */}
             <HomeBlog />
 
             {/* <h2 class="suggest-blog">Có thể bạn thích</h2>
