@@ -1,27 +1,24 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import './SingleBlog.css';
 
 export default function SingleBlog() {
     const { pathname } = useLocation();
+    const idBlog = useParams();
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
 
-    const currentUrl = window.location.href;
-    const urlParts = currentUrl.split('singleBlog/');
-    console.log(urlParts);
-    const [lastPart, setLastPart] = useState(urlParts[urlParts.length - 1]);
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BASE_URLS}blog/getOne/${lastPart}`)
+        fetch(`${process.env.REACT_APP_BASE_URLS}blog/getOne/${idBlog.id}`)
             .then((res) => res.json())
             .then(
                 (result) => {
@@ -36,7 +33,7 @@ export default function SingleBlog() {
                     setError(error);
                 },
             );
-    }, [lastPart]);
+    }, [idBlog.id]);
 
     if (error) {
         return <div>Error: {error.message}</div>;

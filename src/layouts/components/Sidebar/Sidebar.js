@@ -18,7 +18,7 @@ function Sidebar() {
                     icon={<UserGroupIcon />}
                     activeIcon={<UserGroupActiveIcon />}
                 />
-                <MenuItem title="Nổi bật" to={config.routes.blog} icon={<BlogIcon />} activeIcon={<BlogIcon />} />
+                <MenuItem title="Nổi bật" to={config.routes.highlights} icon={<BlogIcon />} activeIcon={<BlogIcon />} />
             </Menu>
 
             <div className={cx('row')}>

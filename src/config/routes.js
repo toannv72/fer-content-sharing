@@ -4,7 +4,7 @@ const routes = {
     profile: '/@:you',
     upload: '/upload',
     search: '/search/:abc',
-    live: '/live',
+    highlights: '/highlights',
     blog: '/blog',
     chutiem: '/chu-tiem',
     login: '/login',

@@ -2,13 +2,12 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './post.css';
 
-export default function Post({ title, img, writing, hour, id }) {
+export default function Post({ title, img, writing, id }) {
     const { pathname } = useLocation();
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
-
     return (
         <div className="post">
             <Link to={`/singleBlog/${id}`} className="link">

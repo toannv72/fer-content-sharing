@@ -15,7 +15,7 @@ export default function name() {
                         chúng còn ảnh hưởng đến việc bộc lộ cảm xúc của người mặc. Vì vậy, nếu bạn muốn khởi đầu
                         một ngày mới như ý, hãy khai màn từ việc chọn quần áo.
                     </p>
-                    <a className={cx('btn')} href="/fashion">
+                    <a className={cx('btn')} href="/Blog">
                         Khám phá ngay
                     </a>
                 </div>
@@ -30,7 +30,7 @@ export default function name() {
                         một người không phân biệt nam hay nữ, khẳng định mình cũng như để thưởng thức cuộc sống.
 
                     </p>
-                    <a className={cx('btn')} href="/sport">
+                    <a className={cx('btn')} href="/Blog">
                         Khám phá ngay
                     </a>
                 </div>
@@ -43,7 +43,7 @@ export default function name() {
                         mỗi người thực hiện ý tưởng, ước mơ, nguyện vọng của cuộc đời mình. Bởi nếu bệnh tật, ốm đau,
                         chúng ta thường sẽ không còn đủ sức khỏe, tâm trí nào mà lo lắng, suy nghĩ đến những việc khác.
                     </p>
-                    <a className={cx('btn')} href="/technology">
+                    <a className={cx('btn')} href="/Blog">
                         Khám phá ngay
                     </a>
                 </div>
@@ -57,7 +57,7 @@ export default function name() {
                         mới mẻ và có người cùng chia sẻ những điều ý nghĩa trong cả cuộc sống lẫn công việc.
                     </p>
 
-                    <a className={cx('btn')} href="/jewelry">
+                    <a className={cx('btn')} href="/Blog">
                         Khám phá ngay
                     </a>
                 </div>

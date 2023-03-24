@@ -6,7 +6,7 @@ import { HeaderOnly } from '~/layouts';
 // Pages
 import Home from '~/pages/Home';
 import Share from '~/pages/Share';
-import Live from '~/pages/Live';
+import Highlights from '~/pages/Highlights';
 import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
@@ -29,7 +29,7 @@ import Information from '~/pages/Setting/Information';
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.share, component: Share },
-    { path: config.routes.live, component: Live },
+    { path: config.routes.highlights, component: Highlights },
     { path: config.routes.blog, component: Blog },
     { path: config.routes.login, component: Login, layout: HeaderOnly },
     { path: config.routes.profile, component: Profile },

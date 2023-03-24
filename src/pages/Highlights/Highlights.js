@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import Test from './Test/Test';
-import Home2 from '../Highlights/Home2';
-import Posts from './posts/Posts';
+// import Test from './Test/Test';
+import Home2 from './Home2';
 
 // import Footer from '~/layouts/Footer';
 // import Posts from './posts/Posts';
 // import App from './New';
 
-function Blog() {
+function Highlights() {
     const { pathname } = useLocation();
 
     useEffect(() => {
@@ -17,12 +16,13 @@ function Blog() {
 
     return (
         <div>
-            <Posts />
-            {/* <Home2 /> */}
+            {/* <Posts /> */}
+            <Home2 />
             {/* <Footer /> */}
-      
+
         </div>
     );
 }
 
-export default Blog;
+export default Highlights;
+
