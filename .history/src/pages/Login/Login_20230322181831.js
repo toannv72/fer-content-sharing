@@ -112,7 +112,6 @@ function Login() {
             const decentralization = JSON.parse(localStorage.getItem('user'));
             // console.log(decentralization.role[0].name);
             if (decentralization.role[0].name === 'ADMIN') {
-                window.location.href = '/admin/product';
                 window.location.href = '/admin/blog/management';
                 // console.log('admin');
             } else {
