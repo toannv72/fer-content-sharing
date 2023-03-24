@@ -4,6 +4,8 @@ import Menu, { MenuItem } from './Menu';
 import {
     User,
     LiveActiveUser,
+    Lock,
+    LiveActiveLock,
 } from '~/components/Icons';    
 import config from '~/config';
 
@@ -26,9 +28,13 @@ function Sidebar2() {
                     activeIcon={<LiveActiveUser />}
                 />
                 {/* <MenuItem title="LIVE" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} /> */}
-                <MenuItem title="Đổi Mật Khẩu" to={config.routes.password} icon={<User />} activeIcon={<User />} />
+                <MenuItem
+                    title="Đổi Mật Khẩu"
+                    to={config.routes.password}
+                    icon={<Lock />}
+                    activeIcon={<LiveActiveLock />}
+                />
             </Menu>
-
         </aside>
     );
 }

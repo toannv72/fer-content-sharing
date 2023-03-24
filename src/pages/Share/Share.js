@@ -21,8 +21,12 @@ function ShareBlog() {
         // console.log(value);
     };
 
+    // get là lấy
+    // post là đăng lên (tạo  lên)
+    // put là chỉnh sửa
+    // delete là xóa
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BASE_URLS}blog/getAllBlog?page=${currentPage - 1}&size=4&sort=id%2Cdesc`)
+        fetch(`${process.env.REACT_APP_BASE_URLS}blog/getAllBlog?page=${currentPage - 1}&size=4`)
             .then((res) => res.json())
             .then(
                 (result) => {
@@ -31,9 +35,7 @@ function ShareBlog() {
                     // console.log(result);
                     setTotalPage(result.totalPage);
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
+              
                 (error) => {
                     throw new Error(error.message);
                 },

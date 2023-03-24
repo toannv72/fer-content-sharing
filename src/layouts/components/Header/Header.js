@@ -79,12 +79,12 @@ function Header() {
         {
             icon: <FontAwesomeIcon icon={faUser} />,
             title: 'View profile',
-            to: '/@:minh',
+            to: '/@ihc',
         },
         {
             icon: <FontAwesomeIcon icon={faGear} />,
             title: 'Settings',
-            to: '/settings',
+            to: '/information',
         },
 
         {
